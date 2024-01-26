@@ -1,5 +1,6 @@
 package com.noah.customer;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,13 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequestMapping("api/v1/customers")
+@AllArgsConstructor
 public class CustomerController {
   
   private final CustomerService customerService;
-  
-  CustomerController(CustomerService customerService) {
-    this.customerService = customerService;
-  }
   
   @PostMapping("/register")
   public void registerCustomer(@RequestBody CustomerRegistrationRequest customerRequest) {

@@ -1,4 +1,4 @@
-package com.noah.customer;
+package com.noah.fraud;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,26 +12,28 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @ToString
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-public class Customer {
-  
+public class FraudCheckHistory {
+
   @Id
   @SequenceGenerator(
-      name = "customer_id_sequence",
-      sequenceName = "customer_id_sequence"
+      name = "fraud_id_sequence",
+      sequenceName = "fraud_id_sequence"
   )
   @GeneratedValue(
       strategy = GenerationType.SEQUENCE,
-      generator = "customer_id_sequence"
+      generator = "fraud_id_sequence"
   )
   private Integer id;
-  private String firstName;
-  private String lastName;
-  private String email;
+  private Integer customerId;
+  private Boolean isFraudster;
+  private LocalDateTime createdAt;
 }
